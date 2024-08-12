@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet" />
+    <title>Tetris</title>
+  </head>
+  <body>
+    <div class="grid"></div>
+
+    <div class="container">
+      <div>
+        <h1>Tetris ^^</h1>
+        <p>Best score:<span class="best-score">0</span></p>
+        <p>Score:<span class="score">0</span></p>
+        <div class="counter">
+          <p>Timer:</p>
+          <p class="timer">00:00:00</p>
+        </div>
+      </div>
+
+      <div class="btns-wrapper">
+        <button class="screen-btn screen-btn-up">
+          <svg
+            class="arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18.2929 15.2893C18.6834 14.8988 18.6834 14.2656 18.2929 13.8751L13.4007 8.98766C12.6195 8.20726 11.3537 8.20757 10.5729 8.98835L5.68257 13.8787C5.29205 14.2692 5.29205 14.9024 5.68257 15.2929C6.0731 15.6835 6.70626 15.6835 7.09679 15.2929L11.2824 11.1073C11.673 10.7168 12.3061 10.7168 12.6966 11.1073L16.8787 15.2893C17.2692 15.6798 17.9024 15.6798 18.2929 15.2893Z" />
+          </svg>
+        </button>
+        <div class="btns-wrapper-down">
+          <button class="screen-btn btn-left">
+            <svg
+              class="arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" />
+            </svg>
+          </button>
+
+          <button class="screen-btn btn-down">
+            <svg
+              class="arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" />
+            </svg>
+          </button>
+
+          <button class="screen-btn btn-right">
+            <svg
+              class="arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z" />
+            </svg>
+          </button>
+        </div>
+        <span class="screen-btn restart">New game</span>
+      </div>
+      <div class="audio">
+        <svg
+          class="audio-icon audio-play"
+          viewBox="0 0 25 25"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M6 22.42C8.20914 22.42 10 20.6292 10 18.42C10 16.2109 8.20914 14.42 6 14.42C3.79086 14.42 2 16.2109 2 18.42C2 20.6292 3.79086 22.42 6 22.42Z"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path
+            d="M18 20.42C20.2091 20.42 22 18.6292 22 16.42C22 14.2109 20.2091 12.42 18 12.42C15.7909 12.42 14 14.2109 14 16.42C14 18.6292 15.7909 20.42 18 20.42Z"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path
+            d="M10 18.4099V9.5C9.99907 8.0814 10.5008 6.70828 11.4162 5.62451C12.3315 4.54074 13.6012 3.81639 15 3.57996L22 2.40991V16.4099"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+
+        <svg
+          class="audio-icon audio-stop"
+          viewBox="0 0 25 25"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M8.29025 15.13C7.52441 14.5911 6.59377 14.338 5.66046 14.4147C4.72715 14.4915 3.85034 14.8932 3.18283 15.55C2.51532 16.2068 2.0994 17.077 2.00757 18.0089C1.91573 18.9409 2.15379 19.8756 2.68027 20.6501"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path
+            d="M5.30859 22.35C5.53632 22.3907 5.76726 22.4107 5.9986 22.4099C7.05946 22.4099 8.07688 21.9885 8.82703 21.2384C9.57717 20.4883 9.9986 19.4708 9.9986 18.4099C10.0006 18.1615 9.97711 17.9136 9.92859 17.6699"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path
+            d="M18 20.42C20.2091 20.42 22 18.6292 22 16.42C22 14.2109 20.2091 12.42 18 12.42C15.7909 12.42 14 14.2109 14 16.42C14 18.6292 15.7909 20.42 18 20.42Z"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path
+            d="M10 13.4099V9.5C9.99907 8.0814 10.5008 6.70828 11.4161 5.62451C12.3315 4.54074 13.6012 3.81639 15 3.57996L20.78 2.57996"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path
+            d="M10 18.42V17.66"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path
+            d="M21 2.42004L1 22.42"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="overlay">
+      <h2 class="game-over">Game over</h2>
+      <button class="btn-restart">Restart</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
